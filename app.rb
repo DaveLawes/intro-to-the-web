@@ -1,8 +1,7 @@
 require 'sinatra'
 
 get '/' do
-  @name = ["Amigo", "Oscar", "Viking"].sample
-  erb(:index)
+  "It works!"
 end
 
 get '/secret' do
@@ -17,6 +16,13 @@ get '/newer' do
   "Please work"
 end
 
-get '/cat' do
-  send_file 'cat.html'
+get '/random-cat' do
+  @name = ["Amigo", "Oscar", "Viking"].sample
+  erb(:index)
+end
+
+get '/named-cat' do
+  p params[:name]
+  @name = params[:name]
+  erb(:index)
 end
